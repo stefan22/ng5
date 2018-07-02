@@ -1,0 +1,386 @@
+<!-- details pg -->
+<div class="details-container" 
+  [class.show]="detailsOn" 
+  *ngFor="let single of details">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-8">
+        <div class="details-info">
+
+          <dl class="dl-horizontal">
+            <dt class="ppname">
+              Event name:</dt>
+            <dd>{{single.eventName}}
+              <dd>
+                <dt class="ppname">Event Buy-in:</dt>
+                <dd>{{single.eventBuyIn}}</dd>
+
+                <dt class="ppname">Event Description:
+                </dt>
+                <dd [innerHTML]="single.eventDescription">
+                  {{single.eventDescription}}</dd>
+
+                <dt class="ppname">Event End date:</dt>
+                <dd>{{ single.eventEndDate}} </dd>
+
+                <dt class="ppname">Event FAQs:</dt>
+                <dd *ngIf="(single.eventFAQs.length < 1) ? 'empty array' : 'nada'">{{ "empty array" || single.eventFAQs}}</dd>
+
+                <dt class="ppname">Event Guarantee:</dt>
+                <dd> {{single.eventGuarantee }}</dd>
+
+                <dt class="ppname">How to buy-in:</dt>
+                <dd> {{single.eventHowToBuyIn || "empty field"}} </dd>
+
+                <dt class="ppname">Payout Example:</dt>
+                <dd [innerHTML]="single.eventPayoutExample"> {{single.eventPayoutExample || "empty field"}} </dd>
+
+                <dt class="ppname">Event Satellite tree:</dt>
+                <dd *ngIf="(single.eventSatelliteTree.length < 1) ? 'empty array' : 'nada'">
+                  {{"empty array" || single.eventSatelliteTree}} </dd>
+
+                <dt class="ppname">Event Satellites text:</dt>
+                <dd> {{single.eventSatellitesText || "empty field"}} </dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="col-md-12 col-lg-8">
+        <div *ngFor="let mini of single.eventSchedule['2017-09-07T']">
+          <div class="ppname">Event Schedule [2017-09-07T]:</div>
+
+          <dl class="dl-horizontal">
+
+            <dt class="ppname">Buy-in:</dt>
+            <dd>{{mini.buy_in}}</dd>
+
+            <dt class="ppname">Chips:</dt>
+            <dd>{{mini.chips || "empty field"}}</dd>
+
+            <dt class="ppname">Clock:</dt>
+            <dd>{{mini.clock || "empty field"}}</dd>
+
+            <dt class="ppname">Date:</dt>
+            <dd>{{mini.date}} </dd>
+
+            <dt class="ppname">Day 3 late registration:</dt>
+            <dd>{{mini.day_three_late_reg}}</dd>
+
+            <dt class="ppname">Day 2 late registration:</dt>
+            <dd>{{mini.day_two_late_reg}}</dd>
+
+            <dt class="ppname">Event name:</dt>
+            <dd>{{mini.event_name}}</dd>
+
+            <dt class="ppname">Id:</dt>
+            <dd>{{ mini.id}}</dd>
+
+              <dt class="ppname">Late reg str:</dt>
+              <dd>{{mini.late_reg_str || "empty field"}}</dd>
+
+              <dt class="ppname">Late reg time:</dt>
+              <dd>{{mini.late_reg_time || "empty field"}}</dd>
+
+              <dt class="ppname">No late reg:</dt>
+              <dd>{{mini.no_late_reg}}</dd>
+
+              <dt class="ppname">Online:</dt>
+              <dd>{{mini.online}}</dd>
+
+              <dt class="ppname">Start time:</dt>
+              <dd>{{mini.start_time}}</dd>
+
+              <dt class="ppname">Title:</dt>
+              <dd>{{mini.title}}</dd>
+          </dl>
+        </div>
+      </div>
+      <!-- endof md12 -->
+
+      <div class="col-md-12 col-lg-8">
+        <div *ngFor="let mini2 of single.eventSchedule['2017-09-08T']">
+		        <div class=" ppname ">Event Schedule [2017-09-08T]:</div>
+				        <dl class="dl-horizontal ">
+				            <dt class="ppname ">Buy-in:</dt>
+				            	<dd>{{mini2.buy_in}}</dd>
+				            
+				            <dt class="ppname ">Chips:</dt>
+				            	<dd>{{mini2.chips || "empty field" }}</dd>	          
+				            
+				            <dt class="ppname ">Clock:</dt>
+				            	<dd>{{mini2.clock || "empty field "}}</dd>       
+				            
+				            <dt class="ppname ">Date:</dt>
+				            	<dd>{{mini2.date }}</dd>          
+		                  
+		                  <dt class="ppname ">Day 3 late registration:</dt>
+		                  	<dd>{{mini2.day_three_late_reg}}</dd>
+		 
+				            <dt class="ppname ">Day 2 late registration:</dt>
+				            	<dd>{{mini2.day_two_late_reg}}</dd>
+		           
+				            <dt class="ppname ">Event name:</dt>
+				            	<dd>{{mini2.event_name}}</dd>
+			           
+                    <dt class="ppname ">Id:</dt>
+                      <dd>{{ mini2.id}}</dd>
+				                       
+				            <dt class="ppname ">Late reg str:</dt>
+				            	<dd>{{mini2.late_reg_str || "empty field"}}</dd>
+				           	           
+				            <dt class="ppname ">Late reg time:</dt>
+				            	<dd>{{mini2.late_reg_time || "empty field"}}</dd>
+				           		                 
+				            <dt class="ppname">No late reg:</dt>
+				            	<dd>{{mini2.no_late_reg}}</dd>
+				           
+			               <dt class="ppname">Online:</dt>
+			               	<dd>{{mini2.online}}</dd>
+		         
+				            <dt class="ppname">Start time:</dt>
+				            	<dd>{{mini2.start_time}}</dd>
+		           
+				            <dt class="ppname">Title:</dt>
+				            	<dd>{{mini2.title}}</dd>				          		        
+				        </dl>
+				   </div>
+				</div>
+				<!-- endof md12 -->
+
+				<div class="col-md-12 col-lg-8 ">
+					<div *ngFor="let mini3 of single.eventSchedule[ '2017-09-09T'] ">
+		        		<div class="ppname ">Event Schedule [2017-09-09T]:</div>
+		     
+				        <dl class="dl-horizontal ">
+				         
+				            <dt class="ppname ">Buy-in:</dt>
+				            	<dd>{{mini3.buy_in}}</dd>
+				            
+				            <dt class="ppname ">Chips:</dt>
+				            	<dd>{{mini3.chips || "empty field "}}</dd>	          
+				            
+				            <dt class="ppname ">Clock:</dt>
+				            	<dd>{{mini3.clock || "empty field "}}</dd>       
+				            
+				            <dt class="ppname ">Date:</dt>
+				            	<dd>{{mini3.date }}</dd>          
+		                  
+		                  <dt class="ppname ">Day 3 late registration:</dt>
+		                  	<dd>{{mini3.day_three_late_reg}}</dd>
+		 
+				            <dt class="ppname ">Day 2 late registration:</dt>
+				            	<dd>{{mini3.day_two_late_reg}}</dd>
+		           
+				            <dt class="ppname ">Event name:</dt>
+				            	<dd>{{mini3.event_name}}</dd>
+			           
+                    <dt class="ppname ">Id:</dt>
+                    <dd>{{ mini3.id}}</dd>
+				                       
+				            <dt class="ppname ">Late reg str:</dt>
+				            	<dd>{{mini3.late_reg_str || "empty field "}}</dd>
+				           	           
+				            <dt class="ppname ">Late reg time:</dt>
+				            	<dd>{{mini3.late_reg_time || "empty field "}}</dd>
+				           		                 
+				            <dt class="ppname ">No late reg:</dt>
+				            	<dd>{{mini3.no_late_reg}}</dd>
+				           
+			               <dt class="ppname ">Online:</dt>
+			               	<dd>{{mini3.online}}</dd>
+		         
+				            <dt class="ppname ">Start time:</dt>
+				            	<dd>{{mini3.start_time}}</dd>
+		           
+				            <dt class="ppname ">Title:</dt>
+				            	<dd>{{mini3.title}}</dd>				          		        
+				        </dl>
+				   </div>
+				</div>
+				<!-- endof md12 -->
+
+				<div class="col-md-12 col-lg-8 ">
+					<div *ngFor="let mini4 of single.eventSchedule[ '2017-09-10T'] ">
+		        		<div class="ppname ">Event Schedule [2017-09-10T]:</div>
+		     
+				        <dl class="dl-horizontal ">
+				         
+				            <dt class="ppname ">Buy-in:</dt>
+				            	<dd>{{mini4.buy_in}}</dd>
+				            
+				            <dt class="ppname ">Chips:</dt>
+				            	<dd>{{mini4.chips || "empty field "}}</dd>	          
+				            
+				            <dt class="ppname ">Clock:</dt>
+				            	<dd>{{mini4.clock || "empty field "}}</dd>       
+				            
+				            <dt class="ppname ">Date:</dt>
+				            	<dd>{{mini4.date }}</dd>          
+		                  
+		                  <dt class="ppname ">Day 3 late registration:</dt>
+		                  	<dd>{{mini4.day_three_late_reg}}</dd>
+		 
+				            <dt class="ppname ">Day 2 late registration:</dt>
+				            	<dd>{{mini4.day_two_late_reg}}</dd>
+		           
+				            <dt class="ppname ">Event name:</dt>
+				            	<dd>{{mini4.event_name}}</dd>
+			           
+                    <dt class="ppname ">Id:</dt>
+                    <dd>{{ mini4.id}}</dd>
+				            <dt class="ppname ">Late reg str:</dt>
+				            	<dd>{{mini4.late_reg_str || "empty field "}}</dd>
+				           	           
+				            <dt class="ppname ">Late reg time:</dt>
+				            	<dd>{{mini4.late_reg_time || "empty field "}}</dd>
+				           		                 
+				            <dt class="ppname ">No late reg:</dt>
+				            	<dd>{{mini4.no_late_reg}}</dd>
+				           
+			               <dt class="ppname ">Online:</dt>
+			               	<dd>{{mini4.online}}</dd>
+		         
+				            <dt class="ppname ">Start time:</dt>
+				            	<dd>{{mini4.start_time}}</dd>
+		           
+				            <dt class="ppname ">Title:</dt>
+				            	<dd>{{mini4.title}}</dd>				          		        
+				        </dl>
+				   </div>
+				</div>
+				<!-- endof md12 -->
+
+
+				<div class="col-md-12 col-lg-8 ">
+    				<div class="details-info ">			    
+				      <dl class="dl-horizontal ">
+				        <dt class="ppname ">
+				          Event Slug:</dt>
+				        <dd>{{single.eventSlug}}<dd>
+
+			            <dt class="ppname ">
+			              Event start date:</dt>
+				         <dd>{{single.eventStartDate}}</dd>
+						</dl>
+					</div>
+				</div>
+
+
+				<div class="col-md-12 col-lg-8 ">
+    				<div class="details-info ">			    
+				      <dl class="dl-horizontal ">
+				        	<dt class="ppname ">
+				          Event TCs:</dt>
+				         <dd [innerHTML]="single.eventTCs ">
+				           {{single.eventTCs }}
+				         <dd>
+			            <dt class="ppname ">
+			              Event Travel:
+			            </dt>
+			            <dd [innerHTML]="single.eventTravel ">
+			               {{single.eventTravel }}
+			            </dd>
+			            <dt class="ppname ">
+			              Event Url:
+			            </dt>
+			            <dd [innerHTML]="single.eventUrl ">
+			               {{single.eventUrl }}
+			            <dd>
+		               <dt class="ppname ">
+		                  Event Venue:
+		               </dt>
+		               <dd [innerHTML]="single.eventVenue ">
+		                   {{single.eventVenue }}
+		               </dd>
+		               <dt class="ppname ">
+		                  Festival Upcoming Prizepool:
+		               </dt>
+		               <dd [innerHTML]="single.festivalUpcomingPrizepool ">
+		                  {{ single.festivalUpcomingPrizepool }}
+		               <dd>         
+                     <dt class="ppname ">
+                      Event Id:
+                     </dt>
+                     <dd [innerHTML]="single.id ">
+                       {{single.id }}
+                     </dd>
+	                  <dt class="ppname ">
+	                      Event Updated:
+	                  </dt>
+	                  <dd [innerHTML]="single.id ">
+	                    {{single.updated.date }}
+	                    {{single.updated.timezone }}
+	                    {{single.updated.timezone_type}}                 
+	                  </dd>
+						</dl>
+					</div>
+				</div>
+
+				<div class="col-md-12 col-lg-8 ">
+    				<div class="details-info ">	
+    					<div class="ppname ">
+        					Event Structure > Main event:
+      				</div>
+				      <div class="ppname ">
+				      Days
+				      </div>
+
+				      <div *ngFor="let structure of single.eventStructure.main_event.days ">
+       				<dl class="dl-horizontal ">
+				        	<dt class="ppname ">
+				        		Day id
+				        	</dt>
+				        	<dd [innerHTML]="single.eventVenue ">
+				        		{{structure.day_id}}
+				        	</dd>
+
+				        	<dt class="ppname ">
+				        		Title:
+				        	</dt>
+				        	<dd [innerHTML]="single.eventVenue ">
+				        		{{structure.title || "empty field "}}
+				        	</dd>
+
+				        	<dt class="ppname ">
+				        		Event name:
+				        	</dt>
+				        	<dd [innerHTML]="single.eventVenue ">
+				        		{{single.eventStructure.main_event.event_name}}
+				        	</dd>
+				      </dl>
+
+
+				      <div *ngFor="let truck of single.eventStructure_1119 ">
+				      	<div *ngFor="let days1 of truck ">
+				      		Days:
+		       				<dl class="dl-horizontal ">
+						        	<dt class="ppname ">
+						        		Day id:
+						        	</dt>
+						        	<dd [innerHTML]="single.eventVenue ">
+						        	{{	days1.day_id}}
+						        	</dd>
+
+						        	<dt class="ppname ">
+						        		Title:
+						        	</dt>
+						        	<dd [innerHTML]="single.eventVenue ">
+						        		{{days1.title || "empty field "}}
+						        	</dd>
+
+						        	<dt class="ppname ">
+						        		Schedule title:
+						        	</dt>
+						        	<dd [innerHTML]="single.eventVenue ">
+						        		{{truck.schedule_title || "empty field "}}
+						        	</dd>
+						      </dl>
+						   </div>
+
+				   </div>
+				</div>
+     
+    		</div> <!-- endof row -->
+   	</div><!-- container -->
+	</div>
+	<!-- details-container -->

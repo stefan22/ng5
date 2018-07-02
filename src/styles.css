@@ -1,0 +1,65 @@
+
+body {
+    position: relative;
+}
+
+app {
+    display: block;
+}
+
+app h1 {
+    text-align: center;
+}
+
+/* .overlay {
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    background-color: rgba(0, 0, 0, .7);
+    position: absolute;
+}
+
+.overlay.show {
+    display: block;
+} */
+
+.loader i {
+    z-index: 9999;
+    color: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+}
+
+
+
+span p {
+  margin:0;
+  margin-top:5px;
+}
+
+span table p {
+  padding-left:10px;
+}
+
+span table.table-v3 tr, span table tr {
+  padding:5px 0;
+}
+
+span table.table-v3, span table {
+  border:1px solid lightgray;
+  margin-top:5px;
+}
+
+span table.table-v3 td,span table td {
+  border:1px solid lightgray;
+  padding:10px 25px;
+}
+
+span table.table-v3 th,span table th {
+  background: #42A5F5;
+  color: white;
+  padding:10px 25px;
+  font-weight: normal;
+}
+
