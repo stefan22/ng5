@@ -1,8 +1,6 @@
-# Pkrlv4
+# Ng5
 
-> Same PPLive Project but instead of Angular 2, is Angular 4 and instead of SystemJS is Webpack     
-> Now, I can do Ng build with Angular CLI!
->
+> Angular4
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.1.
 
