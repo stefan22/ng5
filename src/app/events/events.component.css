@@ -1,13 +1,16 @@
 /* app-root, app-header, header, app-events, app-details {display: block;} */
 
 .live-events {
-    
     padding: 1em;
 }
 
 h2 {
     margin: 1em 0 3em;
     text-align: center;
+}
+
+.all-events {
+    padding: 1em;
 }
 
 .isRoling {
@@ -92,24 +95,24 @@ span.close-details {
 }
 
 .dl-horizontal.black dt {
-  color: #333333;
+    color: #333333;
 }
 
 .left-margin {
-  margin-left:90px;
+    margin-left: 90px;
 }
-
 
 div.ppname.clearfix dt {
-  width:145px;
+    width: 145px;
 }
 
- 
+
 /* new layout */
 
-a:focus, a:active {
+a:focus,
+a:active {
     outline: none !important;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 ul li {
@@ -118,54 +121,53 @@ ul li {
 }
 
 ul.innertree {
-   border: 1px solid #a9b5c0;
-   padding:20px 40px 40px;
-  
+    border: 1px solid #a9b5c0;
+    padding: 20px 40px 40px;
 }
 
-li.list-group-item, a.list-group-item {border:0;}
+li.list-group-item,
+a.list-group-item {
+    border: 0;
+}
 
 a.list-group-item {
     border-bottom: 1px dotted lightgray;
 }
 
 span.edpn {
-  
-  color:darkblue;
-  text-align: right;
-  width: 130px;
-  display: inline-block;
+    color: darkblue;
+    text-align: right;
+    width: 130px;
+    display: inline-block;
 }
-
 
 span.liveedpn {
-  color:darkblue;
-  text-align: right;
-  width: 130px;
-  display: inline-block;
-  margin-left:70px;
+    color: darkblue;
+    text-align: right;
+    width: 130px;
+    display: inline-block;
+    margin-left: 70px;
 }
 
-
 span.edr {
-  color:#212121;
-  margin-left:30px;
+    color: #212121;
+    margin-left: 30px;
 }
 
 span p {
-  margin-top:20px;
-  display: block;
+    margin-top: 20px;
+    display: block;
 }
 
-summary:focus, details:focus,li.list-group-item:focus {
+summary:focus,
+details:focus,
+li.list-group-item:focus {
     outline: none !important;
 }
-
 
 li details.open summary {
     height: auto;
 }
-
 
 details ul li {
     height: auto;
@@ -173,16 +175,39 @@ details ul li {
     vertical-align: middle;
 }
 
-
 span table {
-  margin-top:5px;
-
+    margin-top: 5px;
 }
 
 span table td {
-  padding: 5px;
+    padding: 5px;
 }
 
 ul.liveLeft {
-  margin-left:90px;
+    margin-left: 90px;
+}
+
+div.schedule {
+    line-height: 1.2;
+    vertical-align: top;
+}
+
+span.schedule {
+    display: inline-block;
+    margin-left: 70px;
+}
+
+
+/* aligns it with subs */
+
+span.structure-heading {
+    margin-left: 42px;
+}
+
+span.edr.subheading {
+    margin-left: 70px;
+}
+
+span.dayheading {
+    margin-left:70px;
 }

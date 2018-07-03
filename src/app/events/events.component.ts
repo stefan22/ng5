@@ -9,9 +9,9 @@ import { Apidata } from '../apidata';
   styleUrls: ['./events.component.css']
 })
 export class EventsComponent implements OnInit {
-  events:any[];
+  events: any[];
   eventName = '';
-  details: Array<Apidata>
+  details: any[];
   isValidEvent = false;
   isLoading = true;
   eventsOff: boolean;
@@ -21,19 +21,25 @@ export class EventsComponent implements OnInit {
   emptyArray = 'empty array';
   schedArray = [];
   schadArray = [];
-  sname:string;
-  
+  sname: string;
+  eventStructure: any;
+  days:any = [];
+  schevent: string;
+  prop: string;
+  stkys: any;
+  live: any = [];
 
   //eventSchedule
   buyin: string; chips: string; clock: string; date: string; daytwo: string;
   daythree: string; evnam: string; id: number; latereg: string; nolatereg: string; online: string; lateregst: string; lateregtime: string;
-  start: string; title: string; 
-  esk: any; eventSchedule:any[]; eventStructure: any[];
+  start: string; title: string;
+  esk: any; eventSchedule: any[]; 
+ 
 
   constructor(
     private apidataService: ApidataService
     //private router: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit() {
     // this.router.params.subscribe(params => {
@@ -44,7 +50,7 @@ export class EventsComponent implements OnInit {
       this.events = events.events[0];
       console.log('events list: ', events);
     });
-  
+
   }// ngOnInit
 
 
@@ -70,10 +76,10 @@ export class EventsComponent implements OnInit {
       this.eventsOff = true;
       this.detailsOn = true;
       this.scheduleFn(this.details);
-      
+
       this.eventStructureData(this.details);
 
-      
+
     });
   }
 
@@ -91,7 +97,7 @@ export class EventsComponent implements OnInit {
 
   scheduleFn(obj) {
     obj = obj || undefined;
-    
+
     this.eventSchedule = obj;
     this.eventSchedule = obj[0].eventSchedule;
     //console.log(this.eventSchedule);
@@ -99,7 +105,7 @@ export class EventsComponent implements OnInit {
     this.schedArray.push(this.esk);
     //console.log(this.esk);
     for (this.esk in this.eventSchedule) {
-        this.eventSchedule[this.esk];
+      this.eventSchedule[this.esk];
 
       for (var i = 0; i < this.eventSchedule.length; i++) {
         this.buyin = this.eventSchedule[i].buy_in;
@@ -135,68 +141,89 @@ export class EventsComponent implements OnInit {
     }//for in
   }// scheduleFn
 
-  
-  // event structure
-  estrKeys: any[];
-  stkys: any = [];
-  days: any = [];
-  skdays:any[];
-  live: any = [];
-  sklive:any[];
-
-  big:string;
 
   
   
+  
+
+
+
+
+
 
   eventStructureData(obj) {
-   
-    obj = obj || undefined;
-    this.eventStructure = obj[0].eventStructure;
-    console.log(this.eventStructure);
-    this.stkys = (Object.keys(this.eventStructure));
-    this.schadArray.push(this.stkys);
-    console.log(this.schadArray);
-
-    for(this.stkys in this.eventStructure) {
-      for(var x=0; x < this.eventStructure[this.stkys].days.length; x++) {
-        
-        this.days.push(
-    
-           {
-             day_name: this.stkys,
-             day_id: this.eventStructure[this.stkys].days[x].day_id, 
-             title: this.eventStructure[this.stkys].days[x].title || 'empty field', 
-             event_name: this.eventStructure[this.stkys].event_name || 'empty field',
-             schedule_title: this.eventStructure[this.stkys].schedule_title || 'empty field'
-             
-        });
-
-        this.live.push( 
+   obj = obj || undefined;
+    var y = 1;
+    // eventStructure arr
+    var estruck = obj[0].eventStructure;
+    this.eventStructure = Object.keys(estruck)
+      .map(key => {
+        var reobj = [
+        {
+          name: key
           
-          {
+        },
 
-          // type: this.eventStructure[this.stkys].days[x].live[x + 1].type || 'empty field',
-          // status: this.eventStructure[this.stkys].days[x].live[x + 1].status || 'empty field',
-          // position: this.eventStructure[this.stkys].days[x].live[x + 1].position || 'empty field',
-          // level: this.eventStructure[this.stkys].days[x].live[x + 1].level || 'empty field',
-          // duration: this.eventStructure[this.stkys].days[x].live[x + 1].duration || 'empty field',
-         
-          day_id: this.eventStructure[this.stkys].days[x].day_id,
-          event_name: this.eventStructure[this.stkys].event_name,
-          schedule_title: this.eventStructure[this.stkys].schedule_title,
-
-        });
-
-
-      }// for 1  
-
-    }// for 2
+        {
+          event: estruck[key]
+        }
+      
+      ]   
+      
+        
+        return reobj;
+    });
     
-    console.log(this.days);
+  
+      
+    
+    
+     // eventStructure keys  
+    this.stkys = (Object.keys(obj[0].eventStructure));
+    this.schadArray.push(this.stkys);
+   
+    console.log('eventStructure: ', this.eventStructure);
+    console.log('schadArray: ', this.schadArray);
+    console.log('stkys: ', this.stkys);
+    
+    // for (this.stkys in this.eventStructure) {
+    //   for (var x = 0; x < this.eventStructure.days.length; x++)   {
+    //           this.days.push(
+    //         {
+    //           day_name: this.stkys,
+    //           day_id: this.eventStructure[this.stkys].days[x].day_id,
+    //           title: this.eventStructure[this.stkys].days[x].title || 'empty field',
+    //           event_name: this.eventStructure[this.stkys].event_name || 'empty field',
+    //           schedule_title: this.eventStructure[this.stkys].schedule_title || 'empty field'
+
+    //         });
+
+    //         while (y < 10) { 
+    //           //day_id links up both
+    //           this.live.push(
+    //           {   
+    //               day_id: this.eventStructure[this.stkys].days[x].day_id,
+    //               type: this.eventStructure[this.stkys].days[x].live[y].type || 'empty field',
+    //               status: this.eventStructure[this.stkys].days[x].live[y].status || 'empty field',
+    //               position: this.eventStructure[this.stkys].days[x].live[y].position || 'empty field',
+    //               level: this.eventStructure[this.stkys].days[x].live[y].level || 'empty field',
+    //               duration: this.eventStructure[this.stkys].days[x].live[y].duration || 'empty field'
+ 
+    //           });
+    //           y++;
+
+    //         };// while  
+            
+    //       }// for1
+    // }
+
+    console.log('eventStructure: ', this.eventStructure);
+    console.log('days: ', this.days);
+    console.log('live: ', this.live);
+    console.log('schadArray: ', this.schadArray);
 
   }// eventStructureData fn
- 
+
 
 
 

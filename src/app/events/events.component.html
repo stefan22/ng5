@@ -1,8 +1,10 @@
-
 <div class="container">
   <div class="row row-content">
     <div class="col-12">
-      <h3>Event name: {{ eventName }}</h3>
+      <div class="all-events">
+        <h3>Event name: {{ eventName }}</h3>
+      </div>
+
     </div>
 
     <div class="col-12">
@@ -14,30 +16,26 @@
       <div class="live-events" [class.hide]="eventsOff">
         <div class="live-event-content" #eventContainer (click)="eventDetails($event,eventContainer)" *ngFor="let event of events">
           <a class="event-url" href="https://www.partypoker.com/live/events/{{ event.slug }}.html" title="{{ event.title }}" target="_blank">{{ event.slug }}</a>
-          
+
         </div>
-        
+
       </div>
-
-      
-
 
       <!-- new list layout -->
 
-      
-      <div class="details-container" [class.show]="detailsOn"
-        *ngFor="let single of details"><span class="close-details" (click)="closeDetails()">X</span>
+      <div class="details-container" [class.show]="detailsOn" *ngFor="let  
+         single of details"><span class="close-details" (click)="closeDetails()">X</span>
 
         <div class="container" style="margin-top:30px;">
           <div class="row">
             <div class="col-md-12">
-        
+
               <ul id="treeDetails" class="list-group">
                 <!-- level zero -->
                 <li>
                   <a class="list-group-item active" href="#events" data-toggle="collapse">EVENT DETAILS</a>
                   <!-- for {{ eventName }} -->
-                  <div id="events" class="collapse">
+                  <div id="events" class="collapse in">
                     <ul class="innertree">
                       <!-- level 1 -->
                       <li>
@@ -54,30 +52,35 @@
                       </li>
                       <li>
                         <a class="list-group-item">
-                          <span class="edpn">eventGuarantee:</span> 
+                          <span class="edpn">eventGuarantee:</span>
                           <span class="edr">{{ single.eventGuarantee }}</span>
                         </a>
                       </li>
-                    
+
+                      <!-- event BuyIn -->
                       <li>
                         <a class="list-group-item">
-                        <span class="edpn">eventBuyIn:</span>
-                        <span class="edr">{{ single.eventBuyIn }}</span>
+                          <span class="edpn">eventBuyIn:</span>
+                          <span class="edr">{{ single.eventBuyIn }}</span>
                         </a>
                       </li>
-                     
+
+                      <!-- eventStartDate-->
                       <li>
                         <a class="list-group-item">
                           <span class="edpn">eventStartDate:</span>
                           <span class="edr">{{ single.eventStartDate }}</span>
                         </a>
                       </li>
+
+                      <!-- eventEndDate -->
                       <li>
                         <a class="list-group-item">
                           <span class="edpn">eventEndDate:</span>
                           <span class="edr">{{ single.eventEndDate }}</span>
                         </a>
                       </li>
+
                       <!-- event description -->
                       <li>
                         <a class="list-group-item">
@@ -85,157 +88,123 @@
                           <span class="edr tab" [innerHTML]="single.eventDescription">{{ single.eventDescription }}</span>
                         </a>
                       </li>
+
+                      <!-- eventVenue -->
                       <li>
                         <a class="list-group-item">
                           <span class="edpn">eventVenue:</span>
                           <span class="edr tab" [innerHTML]="single.eventVenue">{{ single.eventVenue }}</span>
                         </a>
                       </li>
+
+                      <!-- eventTravel-->
                       <li>
                         <a class="list-group-item">
                           <span class="edpn">eventTravel:</span>
                           <span class="edr tab" [innerHTML]="single.eventTravel">{{ single.Travel }}</span>
                         </a>
                       </li>
+
+                      <!-- eventSatellitesText -->
                       <li>
                         <a class="list-group-item">
                           <span class="edpn">eventSatellitesText:</span>
                           <span class="edr">{{ single.eventSatellitesText || "empty field" }}</span>
                         </a>
                       </li>
+
                       <!-- eventSchedule -->
                       <li>
                         <a class="list-group-item">
                           <details>
                             <summary>eventSchedule</summary>
                             <ul>
-                              <!-- level 2 -->
-                              <li>dates
-                                <ul>
-                                  <li *ngFor="let d of schedArray[0]">
-                                    <details>
-                                      <summary>{{[d]}}</summary>
+                              <li *ngFor="let d of schedArray[0]">
+                                <details>
+                                  <summary>{{[d]}}</summary>
+                                  <ul>
+                                    <!-- event schedule data -->
+                                    <li *ngFor="let e of eventSchedule[d]">
                                       <ul>
-                                        <li *ngFor="let e of eventSchedule[d]">
-                                          <ul>
-                                            <li>
-                                              <span class="edpn">id:</span>
-                                              <span class="edr">
+                                        <li>
+                                          <span class="edpn">id:</span>
+                                          <span class="edr">
                                                 {{e.id || "empty field"}}
                                               </span>
-                                             
-                                            </li>
-                                            <li>
-                                              <span class="edpn">buy_in:</span>
-                                              <span class="edr">
-                                                {{e.buy_in || "empty field"}}</span>
-                                            </li>
-                                            <li>
-                                              <span class="edpn">chips:</span>
-                                              <span class="edr">
-                                                {{e.chips || "empty field"}}</span>
-                                            </li>
-                                            <li>
-                                              <span class="edpn">clock:</span>
-                                              <span class="edr">
-                                                {{e.clock || "empty field"}}</span>
-                                            </li>
-                                            <li>
-                                              <span class="edpn">day_three_late_reg:
-                                              </span>
-                                              <span class="edr">
-                                                {{e.day_three_late_reg || "empty field"}}</span>
-                                            </li>
-                                            <li>
-                                              <span class="edpn">day_two_late_reg:</span>
-                                              <span class="edr">
-                                                {{e.day_two_late_reg || "empty field"}}</span>
-                                            </li>
-                                            <li>
-                                              <span class="edpn">event_name:</span>
-                                              <span class="edr">
-                                                {{e.event_name || "empty field"}}</span>
-                                            </li>
-                                            <li>
-                                              <span class="edpn">late_reg_str:</span>
-                                              <span class="edr">
-                                                {{e.late_reg_str || "empty field"}}</span>
-                                            </li>
-                                            <li>
-                                              <span class="edpn">late_reg_time:</span>
-                                              <span class="edr">
-                                                {{e.late_reg_time || "empty field"}}</span>
-                                            </li>
-                                            <li>
-                                              <span class="edpn">no_late_reg:</span>
-                                              <span class="edr">
-                                                {{e.no_late_reg || "empty field"}}</span>
-                                            </li>
-                                            <li>
-                                              <span class="edpn">online:</span>
-                                              <span class="edr">
-                                                {{e.online || "empty field"}}</span>
-                                            </li>
-                                            <li>
-                                              <span class="edpn">start_time:</span>
-                                              <span class="edr">
-                                                {{e.start_time || "empty field"}}</span>
-                                            </li>
-                                            <li>
-                                              <span class="edpn">title:</span>
-                                              <span class="edr">
-                                                {{e.title || "empty field"}}</span>
-                                            </li>
-                                            <hr/>
-                                          </ul>
-                                          
-                                          
-                                          
-                                          
-                                          
-                                        
                                         </li>
-                                        
-                                         
-
-                                        <!-- <li *ngFor="let e of eventSchedule[d]">
-                                          time: 
-                                          {{e.start_time}}</li>
-                                        <li *ngFor="let e of eventSchedule[d]">
-                                          late_reg_time:  
-                                          {{e.late_reg_time}}</li>
-                                        <li *ngFor="let e of eventSchedule[d]">
-                                          day_two_late_reg: 
-                                          day_two_late_reg</li>
-                                        <li *ngFor="let e of eventSchedule[d]">
-                                           day_three_late_reg: 
-                                          {{e.day_three_late_reg}}</li>
-                                        <li *ngFor="let e of eventSchedule[d]">
-                                          {{e.late_reg_str}}</li>
-                                        <li *ngFor="let e of eventSchedule[d]">
-                                           late_reg_str: 
-                                          {{e.no_late_reg}}</li>
-                                        <li *ngFor="let e of eventSchedule[d]">
-                                           clock: 
-                                          {{e.clock}}</li>
-                                        
-                                        <li *ngFor="let e of eventSchedule[d]">
-                                           online:
-                                          {{e.online}}</li> -->
+                                        <li>
+                                          <span class="edpn">buy_in:</span>
+                                          <span class="edr">
+                                                {{e.buy_in || "empty field"}}</span>
+                                        </li>
+                                        <li>
+                                          <span class="edpn">chips:</span>
+                                          <span class="edr">
+                                                {{e.chips || "empty field"}}</span>
+                                        </li>
+                                        <li>
+                                          <span class="edpn">clock:</span>
+                                          <span class="edr">
+                                                {{e.clock || "empty field"}}</span>
+                                        </li>
+                                        <li>
+                                          <span class="edpn">day_three_late_reg:
+                                              </span>
+                                          <span class="edr">
+                                                {{e.day_three_late_reg || "empty field"}}</span>
+                                        </li>
+                                        <li>
+                                          <span class="edpn">day_two_late_reg:</span>
+                                          <span class="edr">
+                                                {{e.day_two_late_reg || "empty field"}}</span>
+                                        </li>
+                                        <li>
+                                          <span class="edpn">event_name:</span>
+                                          <span class="edr">
+                                                {{e.event_name || "empty field"}}</span>
+                                        </li>
+                                        <li>
+                                          <span class="edpn">late_reg_str:</span>
+                                          <span class="edr">
+                                                {{e.late_reg_str || "empty field"}}</span>
+                                        </li>
+                                        <li>
+                                          <span class="edpn">late_reg_time:</span>
+                                          <span class="edr">
+                                                {{e.late_reg_time || "empty field"}}</span>
+                                        </li>
+                                        <li>
+                                          <span class="edpn">no_late_reg:</span>
+                                          <span class="edr">
+                                                {{e.no_late_reg || "empty field"}}</span>
+                                        </li>
+                                        <li>
+                                          <span class="edpn">online:</span>
+                                          <span class="edr">
+                                                {{e.online || "empty field"}}</span>
+                                        </li>
+                                        <li>
+                                          <span class="edpn">start_time:</span>
+                                          <span class="edr">
+                                                {{e.start_time || "empty field"}}</span>
+                                        </li>
+                                        <li>
+                                          <span class="edpn">title:</span>
+                                          <span class="edr">
+                                                {{e.title || "empty field"}}</span>
+                                        </li>
+                                        <hr/>
                                       </ul>
-                                    </details>
-                                  </li>
-                                  
-        
-                                </ul>
+                                    </li>
+                                  </ul>
+                                </details>
                               </li>
-                              <!-- endof dates -->
-
                             </ul>
                           </details>
                         </a>
                       </li>
 
+                      <!-- eventHowToBuyIn -->
                       <li>
                         <a class="list-group-item">
                           <span class="edpn">eventHowToBuyIn:</span>
@@ -243,6 +212,7 @@
                         </a>
                       </li>
 
+                      <!-- eventPayoutExample -->
                       <li>
                         <a class="list-group-item">
                           <span class="edpn">eventPayoutExample:</span>
@@ -250,133 +220,76 @@
                         </a>
                       </li>
 
-              
-      <!-- eventStructure -->
-      <li>
-        <a class="list-group-item">
-          <details>
-            <summary>eventStructure</summary>
-              <ul>
-                  <li>
-                    <span>event_name:</span>
-                    <span class="edr">
-                      {{single.eventStructure.main_event.event_name }}
-                    </span>
-                  
-                  </li>
 
+                      <!-- eventStructure -->
+                      <li>
+                        <a class="list-group-item">
+                        <details>
+                          <summary>eventStructure</summary>
+                          <ul>
+                              <li>
+                                <span class="structure-heading">event_name:</span>
+                                <span class="edr subheading">
+                                  {{single.eventStructure.main_event.event_name }}
+                                </span>
+                              </li>
+                              <hr />
 
-                  <!-- schedule title -->
-                  <li>
-                   
-                    <details>
-                      <summary>schedule titles</summary>
-                        <ul>
-                          <li *ngFor="let stky of schadArray[0]">
-                            <details>
-                              <summary>{{ stky }}</summary>
-                              <ul>
-                                <li>
+                              <!-- schedule title -->
+                              <li>
+                                <details>
+                                  <summary>schedule titles</summary>
                                   <ul>
-                                    <!-- <li >
-                                        <span class="edpn">day_id:</span>
-                                        <span class="edr">
-                                          {{ zts.day_id }}
-                                        </span>
+                                    <li *ngFor="let stky of stkys">
+                                      <details>
+                                        <summary>{{ stky }}</summary>
+                                          <ul>
+                                            <li *ngFor="let structure of 
+                                              eventStructure">
+                                              <div class="schedule" 
+                                                *ngIf="structure[0].name == stky">
+                                                <!-- if event_name -->
+                                                <span  class="edpn schedule"
+                                                  *ngIf="structure[1].event.event_name">
+                                                  event_name:</span>
+
+                                                <span class="edr"
+                                                   *ngIf="structure[1].event.event_name">
+                                                  {{ structure[1].event.event_name }}
+                                                </span>
+
+                                                <!-- if scheduleTitle -->
+                                                <span class="edpn schedule" *ngIf="structure[0].name.indexOf('schedule') == 0">
+                                                  schedule_title:</span>
+                                                
+                                                <span class="edr"
+                                                   *ngIf="structure[1].event.schedule_title">
+                                                  {{ structure[1].event.schedule_title }}
+                                                </span>
+                                              </div>  
+
+                                              <!-- days -->
+                                              <div *ngIf="structure[0].name == stky">
+                                                <span class="edpn dayheading">
+                                                  days:
+                                                
+                                                </span>
+                                              </div>
+                            
+                                            </li>
+                                          </ul>  
+                                      </details>
                                     </li>
-                                    <li>
-                                        <span class="edpn">title:</span>
-                                        <span class="edr">
-                                          {{ zts.title }}
-                                        </span>
-                                    </li> -->
-                                    
                                   </ul>
-                                
-                                </li>
-                              </ul>  
-
-
-
-                              <!-- <ul>
-                                <li>
-                                  <ul class="liveLeft">
-                                    <details>
-                                      <summary>live:</summary>
-                                      <li>
-                                        <span class="liveedpn">big:</span>
-                                        <span class="edr">
-                                          {{ eventStructure[stky].days[0].live[1].big }}
-                                        </span>
-                                      </li>
-                                      <li>
-                                        <span class="liveedpn">button_ante:</span>
-                                        <span class="edr">
-                                          {{ eventStructure[stky].days[0].live[1].button_ante }}
-                                        </span>
-                                      </li>
-                                      <li>
-                                        <span class="liveedpn">duration:</span>
-                                        <span class="edr">
-                                          {{ eventStructure[stky].days[0].live[1].duration }}
-                                        </span>
-                                      </li>
-                                      <li>
-                                        <span class="liveedpn">level:</span>
-                                        <span class="edr">
-                                          {{ eventStructure[stky].days[0].live[1].level }}
-                                        </span>
-                                      </li>
-                                      <li>
-                                        <span class="liveedpn">normal_ante:</span>
-                                        <span class="edr">
-                                          {{ eventStructure[stky].days[0].live[1].normal_ante || "empty field" }}
-                                        </span>
-                                      </li>
-                                    </details>
-                                  </ul>
-                                </li>
-                                <hr/>
-                              </ul> -->
-
-
-
-
-
-                           </details>
-                          </li>   
-                        </ul>
-
-                         
-                    </details>
-
-                  </li>
-                                
-                                
-                  <!-- eventStructure live -->
-
-                              </ul>
-                              <ul> 
-                                <li>
-                                    <details>
-                                      <summary>live</summary>
-                                      <ul>
-                                        <li>title</li>
-                                        <li>day_id</li>
-                                      </ul>
-                                    </details>
-                                </li>
-                              </ul>
-                      
-                          </details>
+                                </details>
+                              </li>
+                              <hr />
+                          </ul>
+                          <!-- endof eventStructure -->  
+                        </details>
                         </a>
                       </li>
 
-
-                       
-        
-        
-        
                       <li>
                         <a class="list-group-item">eventSatelliteTree</a>
                       </li>
@@ -415,39 +328,16 @@
                       </li>
                     </ul>
                   </div>
-        
-        
                 </li>
-        
-        
               </ul>
               <!-- endof treedetails -->
-        
+
             </div>
           </div>
         </div>
 
-      
-      
-      
       </div>
+      <!-- endof container -->
 
-
-
-
-      <!-- endof new list layout -->
-
-      <!-- details pg -->
-    
-
-
-
-
-
-
-
-
-
-    <!-- endof containerhere -->
-  </div>
-  <!-- endof details-containerhere -->
+    </div>
+    <!-- endof details-container -->
