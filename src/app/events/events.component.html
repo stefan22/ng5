@@ -40,19 +40,19 @@
                       <!-- level 1 -->
                       <li>
                         <a class="list-group-item">
-                          <span class="edpn">id:</span>
+                          <summary class="line">id:</summary>
                           <span class="edr">{{ single.id }}</span>
                         </a>
                       </li>
                       <li>
                         <a class="list-group-item">
-                          <span class="edpn">eventSlug:</span>
+                          <summary class="line">eventSlug:</summary>
                           <span class="edr">{{ single.eventSlug }}</span>
                         </a>
                       </li>
                       <li>
                         <a class="list-group-item">
-                          <span class="edpn">eventGuarantee:</span>
+                          <summary class="line">eventGuarantee:</summary>
                           <span class="edr">{{ single.eventGuarantee }}</span>
                         </a>
                       </li>
@@ -60,7 +60,7 @@
                       <!-- event BuyIn -->
                       <li>
                         <a class="list-group-item">
-                          <span class="edpn">eventBuyIn:</span>
+                          <summary class="line">eventBuyIn:</summary>
                           <span class="edr">{{ single.eventBuyIn }}</span>
                         </a>
                       </li>
@@ -68,7 +68,7 @@
                       <!-- eventStartDate-->
                       <li>
                         <a class="list-group-item">
-                          <span class="edpn">eventStartDate:</span>
+                          <summary class="line">eventStartDate:</summary>
                           <span class="edr">{{ single.eventStartDate }}</span>
                         </a>
                       </li>
@@ -76,7 +76,7 @@
                       <!-- eventEndDate -->
                       <li>
                         <a class="list-group-item">
-                          <span class="edpn">eventEndDate:</span>
+                          <summary class="line">eventEndDate:</summary>
                           <span class="edr">{{ single.eventEndDate }}</span>
                         </a>
                       </li>
@@ -84,7 +84,7 @@
                       <!-- event description -->
                       <li>
                         <a class="list-group-item">
-                          <span class="edpn">eventDescription:</span>
+                          <summary>eventDescription:</summary>
                           <span class="edr tab" [innerHTML]="single.eventDescription">{{ single.eventDescription }}</span>
                         </a>
                       </li>
@@ -92,7 +92,7 @@
                       <!-- eventVenue -->
                       <li>
                         <a class="list-group-item">
-                          <span class="edpn">eventVenue:</span>
+                          <summary>eventVenue:</summary>
                           <span class="edr tab" [innerHTML]="single.eventVenue">{{ single.eventVenue }}</span>
                         </a>
                       </li>
@@ -100,7 +100,7 @@
                       <!-- eventTravel-->
                       <li>
                         <a class="list-group-item">
-                          <span class="edpn">eventTravel:</span>
+                          <summary>eventTravel:</summary>
                           <span class="edr tab" [innerHTML]="single.eventTravel">{{ single.Travel }}</span>
                         </a>
                       </li>
@@ -108,7 +108,7 @@
                       <!-- eventSatellitesText -->
                       <li>
                         <a class="list-group-item">
-                          <span class="edpn">eventSatellitesText:</span>
+                         <summary class="line">eventSatellitesText:</summary>
                           <span class="edr">{{ single.eventSatellitesText || "empty field" }}</span>
                         </a>
                       </li>
@@ -117,7 +117,7 @@
                       <li>
                         <a class="list-group-item">
                           <details>
-                            <summary>eventSchedule</summary>
+                            <summary>eventSchedule:</summary>
                             <ul>
                               <li *ngFor="let d of schedArray[0]">
                                 <details>
@@ -207,7 +207,7 @@
                       <!-- eventHowToBuyIn -->
                       <li>
                         <a class="list-group-item">
-                          <span class="edpn">eventHowToBuyIn:</span>
+                          <summary class="line">eventHowToBuyIn:</summary>
                           <span class="edr">{{ single.eventHowToBuyIn || "empty field" }}</span>
                         </a>
                       </li>
@@ -225,7 +225,7 @@
                       <li>
                         <a class="list-group-item">
                         <details>
-                          <summary>eventStructure</summary>
+                          <summary>eventStructure:</summary>
                           <ul>
                               <li>
                                 <span class="structure-heading">event_name:</span>
@@ -238,7 +238,7 @@
                               <!-- schedule title -->
                               <li>
                                 <details>
-                                  <summary>schedule titles</summary>
+                                  <summary>schedule titles:</summary>
                                   <ul>
                                     <li *ngFor="let stky of stkys">
                                       <details>
@@ -404,12 +404,23 @@
                           </details>
                         </a>
                       </li>
+                     
+                      <!-- eventTCs -->
                       <li>
-                        <a class="list-group-item">eventTCs</a>
+                        <a class="list-group-item">
+                          <summary>eventTCs</summary>
+                          <span class="edr tab" [innerHTML]="single.eventTCs">{{ single.eventTCs }}</span>
+                        </a>
                       </li>
+
+                      <!-- eventUrl -->       
                       <li>
-                        <a class="list-group-item">eventUrl</a>
+                        <a class="list-group-item">
+                          <summary class="line">eventUrl</summary>
+                          <span class="edr">{{ single.eventUrl }}</span>
+                        </a>
                       </li>
+                       
                     </ul>
                   </div>
                 </li>
@@ -425,3 +436,4 @@
 
     </div>
     <!-- endof details-container -->
+
