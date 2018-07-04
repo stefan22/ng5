@@ -194,6 +194,11 @@ div.schedule {
 
 span.schedule {
     display: inline-block;
+    margin-left: 80px;
+}
+
+span.main {
+    display: inline-block;
     margin-left: 70px;
 }
 
@@ -209,5 +214,33 @@ span.edr.subheading {
 }
 
 span.dayheading {
-    margin-left:70px;
+    margin-left: 70px;
+}
+
+span.edr.days {
+    margin-left: 80px;
+}
+
+span.tree-left {
+    color: darkblue;
+    text-align: right;
+    width: 130px;
+    display: inline-block;
+    line-height: 1.5;
+    vertical-align: top;
+}
+
+span.tree-right {
+    color: #212121;
+    margin-left: 30px;
+    display: inline-block;
+    width: 150px;
+    line-height: 1.5;
+    overflow: hidden;
+    vertical-align: tip;
+    vertical-align: top;
+}
+
+li > div.satres:first-child {
+    margin-top:30px;
 }

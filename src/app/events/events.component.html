@@ -249,7 +249,7 @@
                                               <div class="schedule" 
                                                 *ngIf="structure[0].name == stky">
                                                 <!-- if event_name -->
-                                                <span  class="edpn schedule"
+                                                <span  class="edpn main"
                                                   *ngIf="structure[1].event.event_name">
                                                   event_name:</span>
 
@@ -266,16 +266,49 @@
                                                    *ngIf="structure[1].event.schedule_title">
                                                   {{ structure[1].event.schedule_title }}
                                                 </span>
+                                                <!-- <div>
+                                                  <details *ngIf="structure[0].name.indexOf('schedule') == 0">
+                                                    <summary *ngIf="structure[0].name.indexOf('schedule') == 0">days</summary>
+                                                    <ul>
+                                                      <li *ngFor="let days of structure[1].event.days">
+                                                        <div>
+                                                          <span class="edpn">
+                                                            day_id:
+                                                          </span>
+                                                          <span class="edr days">
+                                                            {{ days.day_id }}
+                                                          </span>
+                                                        </div>
+                                                      </li>
+                                                    </ul>
+                                                  </details>
+                                                </div> -->
+
                                               </div>  
 
                                               <!-- days -->
-                                              <div *ngIf="structure[0].name == stky">
-                                                <span class="edpn dayheading">
-                                                  days:
-                                                
-                                                </span>
+
+                                              <div *ngIf="structure[0]
+                                                .name.indexOf(stky) == 0">
+                                                <details>
+                                                  <summary>days</summary>
+                                                  <ul>
+                                                    <li *ngFor="let dys of structure[1].event.days">
+                                                      <div>
+                                                        <span class="edr days">
+                                                         day_id: 
+                                                        </span>
+                                                        <span class="edr">
+                                                          {{ dys.day_id }}
+                                                        </span>
+                                                      </div>
+                                                 
+
+                                                    </li>
+                                                  </ul>
+                                                </details>
                                               </div>
-                            
+
                                             </li>
                                           </ul>  
                                       </details>
@@ -290,9 +323,60 @@
                         </a>
                       </li>
 
+                      <!-- eventSatelliteTree -->
                       <li>
-                        <a class="list-group-item">eventSatelliteTree</a>
+                        <a class="list-group-item">
+                          <details>
+                            <summary>eventSatelliteTree</summary>
+                            <ul>
+                              <li class="clearfix" 
+                                *ngFor="let sat of single.eventSatelliteTree">
+                                <div class="satres clearfix">
+                                  <span class="tree-left">id:</span>
+                                  <span class="tree-right">
+                                    {{sat.id || "empty field"}}
+                                  </span>
+                                  <span class="tree-left">buyIn:</span>
+                                  <span class="tree-right">
+                                    {{sat.buyIn || "empty field"}}
+                                  </span>
+                                  <span class="tree-left">chips:</span>
+                                  <span class="tree-right">
+                                    {{sat.chips || "empty field"}}
+                                  </span>
+                                </div>
+
+                                <div class="satres clearfix">
+                                  <span class="tree-left">currency:</span>
+                                  <span class="tree-right">
+                                    {{sat.currency || "empty field"}}
+                                  </span>
+                                  <span class="tree-left">description:</span>
+                                  <span class="tree-right">
+                                    {{sat.description || "empty field"}}
+                                  </span>
+                                  <span class="tree-left">title:</span>
+                                  <span class="tree-right">
+                                    {{sat.title || "empty field"}}
+                                  </span>
+                                </div>
+
+                                <div class="satres clearfix">
+                                  <span class="tree-left">type:</span>
+                                  <span class="tree-right">
+                                    {{sat.type || "empty field"}}
+                                  </span>
+                                </div>
+                                <hr />
+                                
+                                
+                                
+                              </li>
+                            </ul>
+                          </details>
+                        </a>
                       </li>
+
                       <li>
                         <a class="list-group-item">
                           <details>
